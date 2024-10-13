@@ -1,17 +1,20 @@
 const express = require('express')
 const router = express.Router()
+const { v4: uuidv4 } = require('uuid')
 
 const Task = require('../models/Task')
 
 
 router.post('/', async (req, res) => {
    const { title } = req.body
+   const { description } = req.body
+   const taskId = uuidv4()
 
-   if(!title){
+   if(!title || !description){
       return res.status(400).json({ message: 'Você deve inserir o título da tarefa' })
    }
 
-   const task = new Task({ title })
+   const task = new Task({ taskId, title, description })
    await task.save()
    res.status(201).json(task)
 })

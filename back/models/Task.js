@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const taskSchema = new mongoose.Schema({
    taskId:{
-      type: BigInt,
+      type: String,
       required: true
    },
    title:{
