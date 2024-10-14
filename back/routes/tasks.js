@@ -6,6 +6,7 @@ const Task = require('../models/Task')
 
 
 router.post('/', async (req, res) => {
+   console.log('entrou')
    const { title } = req.body
    const { description } = req.body
    const taskId = uuidv4()
@@ -32,8 +33,11 @@ router.put('/:id', async (req, res) => {
 })
 
 router.delete('/:id', async (req, res) => {
+   console.log('delete')
    const { id } = req.params
    await Task.findByIdAndDelete(id)
    res.status(200).json({ message: 'Tarefa removida' })
 })
- 
+
+
+module.exports = router
