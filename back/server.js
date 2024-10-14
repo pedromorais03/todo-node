@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
@@ -12,22 +13,10 @@ const client = redis.createClient()
 
 client.on('error', (err) => console.log('Erro de cliente Redis', err))
 
-// (async () => {
-//    await client.connect()
-// })()
-
 // middlewares
 app.use(express.json())
 app.use(cors())
 app.use('/api/tasks', taskRoutes)
-
-// const cache = async (req, res, next) => {
-//    const tasks = await client.get('tasks')
-//    if (tasks) {
-//       return res.status(200).json(JSON.parse(tasks))
-//    }
-//    next()
-// }
 
 mongoose.connect(process.env.URI_MONGO, {
    useNewUrlParser: true,

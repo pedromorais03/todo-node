@@ -48,7 +48,7 @@
 
 .container .task{
    margin-top: 2rem;
-   background-color: beige;
+   color: white;
    width: 40vw;
    border-radius: 10px;
    display: flex;
@@ -56,4 +56,36 @@
    align-items: center;
    justify-content: center;
    padding: 10px 20px;
+}
+
+.container .task button.btn-delete{
+   border: none;
+   width: 240px;
+   height: 40px;
+   background-color: crimson;
+   color: white;
+   border-radius: 10px;
+   cursor: pointer;
+   transition: .5s all ease;
+   margin-bottom: 1.2rem;
+}
+
+.container .task button.btn-update{
+   border: none;
+   width: 240px;
+   height: 40px;
+   background-color: forestgreen;
+   color: white;
+   border-radius: 10px;
+   cursor: pointer;
+   transition: .5s all ease;
+}
+
+.container .task button:hover{
+   scale: 1.05;
+}
+
+.container .task .task-id{
+   visibility: hidden;
+   display: none;
 }
