@@ -10,6 +10,7 @@ window.addEventListener('load', () => {
    xhr.onload = () => {
       if(xhr.status === 200){
          const res = JSON.parse(xhr.responseText)
+         console.log(res)
 
          res.forEach(data => {
             if(data.completed){
@@ -19,6 +20,7 @@ window.addEventListener('load', () => {
                bgColor = '#E1C16E'
                msg = 'A tarefa não está completa!'
             }
+            
             taskDiv.innerHTML += `<div style='background-color: ${bgColor}' class='task'> 
                                     <span class='task-id'> ${data.taskId} </span>
                                     <h3>${data.title}</h3> 
@@ -28,7 +30,6 @@ window.addEventListener('load', () => {
                                     <button onclick='update_task("${data._id}", "${data.completed}")' type="submit" class="btn-update">Concluir Tarefa</button>
                                   </div>`
          });
-         // taskDiv.innerHTML += `<div class='task'> <h3>${res.title}</h3> <span>${res.desc}</span> </div>`
       }
    }
    xhr.send()
@@ -76,7 +77,7 @@ async function delete_task(id){
    location.reload()
 }
 
-async function update_task(id, isCompleted){
+async function update_task(id){
    console.log(id)
    const taskId = id 
 
@@ -91,7 +92,6 @@ async function update_task(id, isCompleted){
       }
    }
 
-   
    const data = JSON.stringify({
       completed: true,
    })
